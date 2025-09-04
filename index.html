@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Task: Lightweight KYC App for Bharat</title>
+  <meta name="description" content="Assignment brief: Design a lightweight KYC app for Bharat with UX, features, tech architecture, and success metrics." />
+  <style>
+    :root{
+      --bg:#0b1020;--card:#111a35;--muted:#98a2b3;--text:#edf2ff;--accent:#7c9cff;--accent-2:#22c55e;--link:#a5b4fc;--border:#263157;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;line-height:1.6;background:linear-gradient(180deg,#0b1020 0%, #0e1730 100%);color:var(--text)}
+    a{color:var(--link);text-decoration:none}
+    a:hover{opacity:.9;text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
+
+    /* Top bar */
+    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px);background:rgba(11,16,32,.75);border-bottom:1px solid var(--border)}
+    .topbar-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg, var(--accent), #60a5fa, #34d399);} 
+    .title{font-weight:700;letter-spacing:.3px}
+    .actions{display:flex;gap:10px}
+    .btn{appearance:none;border:1px solid var(--border);background:linear-gradient(180deg,#1a2450,#141c3d);color:var(--text);padding:8px 14px;border-radius:12px;cursor:pointer;font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#5273ff,#3b62ff);box-shadow:0 6px 16px rgba(61,98,255,.35)}
+    .btn.success{border-color:transparent;background:linear-gradient(180deg,#22c55e,#16a34a)}
+
+    /* Hero */
+    .hero{border:1px solid var(--border);background:linear-gradient(180deg,rgba(18,28,64,.45),rgba(15,22,49,.3));border-radius:20px;padding:28px 22px;margin-top:16px}
+    .hero h1{margin:0;font-size:clamp(22px, 3vw, 32px)}
+    .muted{color:var(--muted)}
+
+    /* Card */
+    .card{border:1px solid var(--border);background:linear-gradient(180deg,rgba(17,26,53,.65),rgba(14,21,46,.55));border-radius:20px;padding:20px;margin:16px 0}
+
+    /* TOC */
+    .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .toc a{display:block;border:1px solid var(--border);background:rgba(17,26,53,.55);padding:12px 14px;border-radius:14px}
+
+    h2{margin-top:28px}
+    h3{margin-top:18px}
+    code, pre{background:#0c132b;border:1px solid var(--border);border-radius:10px;padding:2px 6px}
+    pre{padding:12px;overflow:auto}
+    ul{padding-left:18px}
+
+    /* Callout */
+    .callout{display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--accent);background:rgba(124,156,255,.08);padding:14px;border-radius:12px}
+
+    /* Footer */
+    footer{margin:40px 0 20px 0;color:var(--muted);font-size:14px;text-align:center}
+
+    /* Print to PDF */
+    @media print{
+      .topbar,.actions,.toc{display:none!important}
+      body{background:white;color:#000}
+      .card,.hero{box-shadow:none;border:1px solid #ddd}
+      a{color:#06f}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner container">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><div class="title">Product Task: Lightweight KYC App</div></div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()" title="Export as PDF">Download PDF</button>
+        <a class="btn primary" href="#how-to-get-a-url">Get a Shareable URL</a>
+        <a class="btn success" href="https://forms.gle/UbQ8LmuQJ74yo2ZP7" target="_blank" rel="noopener">Submit</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Product Task Guidelines</h1>
+      <p class="muted">Select <strong>one</strong> problem statement. Submit within <strong>72–84 hours</strong>. Ensure originality and proper citations.</p>
+      <div class="card">
+        <h3>Submission Instructions</h3>
+        <ul>
+          <li>Rename final files: <code>Name_CollegeName_Product.pdf</code> for decks/ppts, <code>Name_CollegeName_Product.mp4</code> for videos.</li>
+          <li>Submit here: <a href="https://forms.gle/UbQ8LmuQJ74yo2ZP7" target="_blank" rel="noopener">Google Form</a>.</li>
+          <li>Your work will be checked using AI detection and plagiarism tools.</li>
+        </ul>
+      </div>
+      <div class="callout">
+        <div>💡</div>
+        <div>
+          Tip: Use the <em>Download PDF</em> button above to export this page as a submission-ready PDF with clean print styles.
+        </div>
+      </div>
+    </section>
+
+    <nav class="card toc" aria-label="Table of contents">
+      <a href="#problem-1">Problem Statement 1 — Lightweight KYC App for Bharat</a>
+      <a href="#your-task">Your Task (Overview)</a>
+      <a href="#product-design-ux">1) Product Design & UX</a>
+      <a href="#features">2) Features & LLM Ideas</a>
+      <a href="#tech-architecture">3) Technical Architecture</a>
+      <a href="#misc">4) Miscellaneous</a>
+      <a href="#how-to-get-a-url">How to get a URL for this page</a>
+    </nav>
+
+    <section id="problem-1" class="card">
+      <h2>Problem Statement 1 — Design a Lightweight KYC App for Bharat</h2>
+      <p><strong>Context:</strong> You are the Associate Product Manager at a tech startup building digital onboarding solutions. Your company is launching a mobile app targeting rural and semi-urban India, where smartphone specs are low-end, bandwidth is limited, and users may not be digitally literate.</p>
+      <p>The app must support:</p>
+      <ul>
+        <li>Digilocker-based KYC</li>
+        <li>Document-based KYC (Aadhaar, PAN, DL, VoterID)</li>
+        <li>Face authentication (liveness, facematch checks)</li>
+        <li>Integration with other client apps (SDK integration, web-redirection, etc.)</li>
+        <li>Offline & retry-friendly mode</li>
+      </ul>
+    </section>
+
+    <section id="your-task" class="card">
+      <h2>Your Task (Overview)</h2>
+      <ol>
+        <li><strong>Product Design & UX</strong> — Low digital literacy flows, wireframes, offline/low-network support.</li>
+        <li><strong>Features</strong> — 2–3 innovative, trust/ease LLM features + Prioritisation Matrix.</li>
+        <li><strong>Technical Architecture</strong> — Optimize SDK size, on-device vs server processing, low-bandwidth & resume flows.</li>
+        <li><strong>Misc</strong> — Success metrics, security concerns & mitigations.</li>
+      </ol>
+    </section>
+
+    <section id="product-design-ux" class="card">
+      <h2>1) Product Design & UX</h2>
+      <ul>
+        <li>How will the app work for users with low digital literacy?</li>
+        <li>What will the user flow look like (screens, guidance, fail-safes)? Create wireframes.</li>
+        <li>What offline/low-network support will you offer?</li>
+      </ul>
+    </section>
+
+    <section id="features" class="card">
+      <h2>2) Features</h2>
+      <ul>
+        <li>Suggest and implement 2–3 innovative features to improve trust or ease of use using LLMs.</li>
+        <li>How will you prioritise which features to build? Create a Prioritisation Matrix.</li>
+      </ul>
+    </section>
+
+    <section id="tech-architecture" class="card">
+      <h2>3) Technical Architecture</h2>
+      <ul>
+        <li>How will you optimize SDK size?</li>
+        <li>What trade-offs will you make between on-device vs server-side processing (e.g., facematch, liveness)?</li>
+        <li>How will you handle low bandwidth and retry/resume flows?</li>
+      </ul>
+    </section>
+
+    <section id="misc" class="card">
+      <h2>4) Miscellaneous</h2>
+      <ul>
+        <li>How would you measure the success of the app?</li>
+        <li>Any security concerns and how you’ll solve them?</li>
+      </ul>
+    </section>
+
+    <section id="how-to-get-a-url" class="card">
+      <h2>How to turn this into a shareable website URL (free & quick)</h2>
+      <ol>
+        <li><strong>Download this file</strong> (right‑click → Save As → <code>index.html</code>).</li>
+        <li>
+          <strong>Option A — Netlify Drop (easiest)</strong>
+          <ul>
+            <li>Go to <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>.</li>
+            <li>Drag and drop <code>index.html</code>. You’ll instantly get a live URL.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Option B — GitHub Pages</strong>
+          <ul>
+            <li>Create a repo (e.g., <code>kyc-assignment</code>), upload <code>index.html</code>.</li>
+            <li>Settings → Pages → Deploy from <em>branch</em> → select <code>main</code> & <code>/root</code>.</li>
+            <li>Wait a moment for a URL like <code>https://yourname.github.io/kyc-assignment/</code>.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Option C — Vercel</strong>
+          <ul>
+            <li>Sign in at <a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a>, click <em>New Project</em>, import your GitHub repo with <code>index.html</code>.</li>
+            <li>Deploy → You’ll get a URL like <code>https://kyc-assignment-yourname.vercel.app</code>.</li>
+          </ul>
+        </li>
+        <li><strong>(Optional)</strong> Use a link shortener (e.g., Bitly) to make a neat link to share.</li>
+      </ol>
+      <p class="muted">Everything on this page is self‑contained (no external assets), so it’s perfect for quick, reliable hosting.</p>
+    </section>
+
+    <footer>
+      © <span id="y"></span> — Lightweight KYC App Assignment | Built as a single‑file site for fast sharing.
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
